@@ -45,7 +45,7 @@
 以batch_size=32, max_n_days=5,max_n_msgs=30,max_n_words=40,stock_size=88举例(若图不清晰，可以复制代买至markdown中选择mermaid查看)
 
 ```mermaid
-graph LR
+graph TD
     word -->|32,5,30,40|word_embedding(WordEmbed Layer)
     word_embedding -->|32,5,30,40,50|msg_embed(MessageEmbed Layer)
     msg_embed -->|32,5,30,100|Transformer(Transformer Encoder)
@@ -58,7 +58,8 @@ graph LR
     concat -->|32,300|linear(linear) -->|32,2|softmax(softmax) -->|32,2|prediction
 ```
 
-![image](https://user-images.githubusercontent.com/37182740/149736764-a1e56b26-1cb5-461c-be58-d8bd40da5390.png)
+![image](https://user-images.githubusercontent.com/37182740/149754219-81f4eb2f-fd96-4b5c-b0c0-a7eb6da4f371.png)
+![image](https://user-images.githubusercontent.com/37182740/149754256-fbc902d0-376a-4808-96f8-43702ee7ed8f.png)
 
 
 
