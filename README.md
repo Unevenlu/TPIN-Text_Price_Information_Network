@@ -58,6 +58,8 @@ graph LR
     concat -->|32,300|linear(linear) -->|32,2|softmax(softmax) -->|32,2|prediction
 ```
 
+![image](https://user-images.githubusercontent.com/37182740/149736764-a1e56b26-1cb5-461c-be58-d8bd40da5390.png)
+
 
 
 ## Running
