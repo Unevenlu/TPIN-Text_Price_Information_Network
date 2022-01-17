@@ -1,0 +1,168 @@
+---
+global variable:
+  mode: 'all'
+  ac_func: 'relu'
+  last_ac_func: 'tanh'
+  price_ac_func: 'tanh'
+  word_dropout: 0.3
+  msg_dropout: 0
+  fnn_dropout: 0.1
+  att_dropout: 0
+  add_norm_dropout: 0
+  price_dropout: 0.1
+  n_epochs: 15
+  batch_size: 4
+  msg_att: 'y' #y,n
+
+  opt: 'adam'  # sgd, adam
+  lr: 0.01
+  clip: 15.0
+  adam_betas[0]: 0.9
+  adam_betas[1]: 0.98
+  adam_eps: 1e-9
+
+  print_step: 200
+  n_gpu: 1
+
+  retrain_n_epochs: 5 #继续训练5个epochs
+  use_checkpoint: 0 #1表示在最新一次的checkpoint的模型上再训练
+
+  word_embed_type: 'glove' #glove,cn,rand
+  weight_init: 'xavier-uniform'
+  cell_type: 'gru'  # rnn, gru, lstm
+  word_embed_size: 50
+  msg_embed_size: 150
+  stock_embed_size: 150
+  price_size: 3
+  y_size: 2
+  fnn_size: 600
+  generator_size: 1800
+  msg_price_concat_size: 450
+  shuffle: 1
+  max_n_days: 5
+  max_n_msgs: 20
+  max_n_words: 30
+  decay_step: 100
+  warm_step: 100
+  decay_rate: 0.96
+  momentum: 0.9
+  use_in_bn: 0
+  use_ssindex: 0
+  data_n_work: 4
+
+  init_stock_with_word: 0
+
+layer variable:
+  msg_rnn_layers: 20
+  num_of_head: 10
+  use_mask: 'y' #y,n
+  n_encoder_layers: 1
+  msg_rnn_cell: 'gru'
+  price_rnn_cell: 'lstm'
+  price_rnn_layers: 20
+
+  use_daily_mask: 0
+
+paths:
+  stocknet_path:
+    save: 'save/'
+    data: 'data/'
+    msg_raw: 'tweet/raw'
+    msg_preprocessed: 'tweet/preprocessed'
+    price: 'price/preprocessed'
+    res: 'res/'
+    word_vec: 'glove.twitter.27B.50d.txt'
+    vocab: 'vocab.txt'
+    graphs: 'graphs'
+    checkpoints: 'checkpoints/stocknet'
+    log: 'log/'
+
+  my_am_path:
+    save: 'save/'
+    data: 'my_data/'
+    msg_raw: 'message/american/raw'
+    msg_preprocessed: 'message/american/preprocessed'
+    price: 'price/am/preprocessed'
+    res: 'res/'
+    word_vec: 'glove.twitter.27B.50d.txt'
+    vocab: 'am_vocab.txt'
+    graphs: 'graphs'
+    checkpoints: 'checkpoints/my_am'
+    log: 'log/'
+
+  my_cn_path:
+    save: 'save/'
+    data: 'my_data/'
+    msg_raw: 'message/chinese/raw'
+    msg_preprocessed: 'message/chinese/preprocessed'
+    price: 'price/cn/preprocessed'
+    res: 'res/'
+    word_vec: 'cn_vec.txt'
+    vocab: 'cn_vocab.txt'
+    graphs: 'graphs'
+    checkpoints: 'checkpoints/my_cn'
+    log: 'log/'
+
+dates:
+  train_start_date: '2014-01-01'
+  train_end_date: '2015-08-01'
+  dev_start_date: '2015-08-01'
+  dev_end_date: '2015-10-01'
+  test_start_date: '2015-10-01'
+  test_end_date: '2016-01-01'
+  unit_test_start_date: '2015-08-01'
+  unit_test_end_date: '2015-08-14'
+
+my_dates:
+  train_start_date: '2018-01-01'
+  train_end_date: '2021-03-01'
+  dev_start_date: '2021-03-01'
+  dev_end_date: '2021-07-01'
+  test_start_date: '2021-07-01'
+  test_end_date: '2022-01-01'
+  unit_test_start_date: '2021-03-01'
+  unit_test_end_date: '2021-04-01'
+
+control:
+  use_data: 'stocknet'
+
+stocks:
+  materials: ['XOM', 'RDS-B', 'PTR', 'CVX', 'TOT', 'BP', 'BHP', 'SNP', 'SLB', 'BBL']
+  consumer_goods: ['AAPL', 'PG', 'BUD', 'KO', 'PM', 'TM', 'PEP', 'UN', 'UL', 'MO']
+  healthcare: ['JNJ', 'PFE', 'NVS', 'UNH', 'MRK', 'AMGN', 'MDT', 'ABBV', 'SNY', 'CELG']
+  services: ['AMZN', 'BABA', 'WMT', 'CMCSA', 'HD', 'DIS', 'MCD', 'CHTR', 'UPS', 'PCLN']
+  utilities: ['NEE', 'DUK', 'D', 'SO', 'NGG', 'AEP', 'PCG', 'EXC', 'SRE', 'PPL']
+  cong: ['IEP', 'HRG', 'CODI', 'REX', 'SPLP', 'PICO', 'AGFS', 'GMRE']
+  finance: ['BCH', 'BSAC', 'BRK-A', 'JPM', 'WFC', 'BAC', 'V', 'C', 'HSBC', 'MA']
+  industrial_goods: ['GE', 'MMM', 'BA', 'HON', 'UTX', 'LMT', 'CAT', 'GD', 'DHR', 'ABB']
+  tech: ['GOOG', 'MSFT', 'FB', 'T', 'CHL', 'ORCL', 'TSM', 'VZ', 'INTC', 'CSCO']
+
+my_stocks:
+  am_stocks:
+    A: [ 'AAPL', 'ABBV', 'ABT', 'ACN', 'ADBE', 'ADP', 'AEP', 'AMT', 'AMZN', 'APD', 'ASML', 'AVGO', 'AWK' ]  #13
+    B: [ 'BA', 'BABA', 'BAC', 'BBL', 'BHP', 'BP', 'BRK-A', ]  #7
+    C: [ 'C-PJ', 'CAT', 'CCI', 'CHTR', 'CMCSA', 'COP', 'COST', 'CSCO', 'CTA-PB', 'CVX' ]  #10
+    D: [ 'D', 'DE', 'DEO', 'DHR', 'DIS', 'DLR', 'DUK' ] #7
+    E: [ 'ECL', 'EL', 'ENB', 'EQIX', 'EQNR', 'EXC', ] #6
+    F: [ 'FB', 'FCX' ]  #1
+    G: [ 'GE', 'GOOG' ] #1
+    H: [ 'HD', 'HON' ]  #2
+    J: [ 'JD', 'JNJ', 'JPM' ] #3
+    K: [ 'KO' ] #1
+    L: [ 'LLY', 'LOW' ] #2
+    M: [ 'MA', 'MCD', 'MMM', 'MS', 'MSFT' ] #5
+    N: [ 'NEE', 'NEM', 'NFLX', 'NGG', 'NKE', 'NVDA', 'NVO', 'NVS' ] #8
+    O: [ 'O', 'ORCL' ]  #2
+    P: [ 'PEP', 'PFE', 'PG', 'PLD', 'PM', 'PSA', 'PTR', 'PYPL' ]  #8
+    R: [ 'RDS-B', 'RIO', 'RTX' ]  #3
+    S: [ 'SBAC', 'SBUX', 'SCHW', 'SHW', 'SNAP', 'SNP', 'SO', 'SPG-PJ', 'SRE' ]  #9
+    T: [ 'T', 'TGT', 'TM', 'TMO', 'TMUS', 'TSLA', 'TSM', 'TTE' ]  #8
+    U: [ 'UL', 'UNH', 'UNP', 'UPS' ]  #4
+    V: [ 'V', 'VALE', 'VZ' ]  #3
+    W: [ 'WELL', 'WFC-PL', 'WMT' ]  #3
+    X: [ 'XEL', 'XOM' ] #2
+
+  cn_stocks:
+
+
+
