@@ -42,7 +42,7 @@
 
 ## 模型框架
 
-以batch_size=32, max_n_days=5,max_n_msgs=30,max_n_words=40,stock_size=88举例
+以batch_size=32, max_n_days=5,max_n_msgs=30,max_n_words=40,stock_size=88举例(若图不清晰，可以复制代买至markdown中选择mermaid查看)
 
 ```mermaid
 graph LR
