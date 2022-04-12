@@ -1,4 +1,4 @@
-# Stock Price Prediction
+# Text Price Information Network
 
 利用股票的过往价格（包括本股票的价格信息，以及同一股市其他股票的价格信息）以及有关该股票的历史文章对股票未来的价格趋势做出预测。
 
