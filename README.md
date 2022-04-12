@@ -58,10 +58,6 @@ graph TD
     concat -->|32,300|linear(linear) -->|32,2|softmax(softmax) -->|32,2|prediction
 ```
 
-![image](https://user-images.githubusercontent.com/37182740/149754219-81f4eb2f-fd96-4b5c-b0c0-a7eb6da4f371.png)
-![image](https://user-images.githubusercontent.com/37182740/149754256-fbc902d0-376a-4808-96f8-43702ee7ed8f.png)
-
-
 
 ## Running
 
