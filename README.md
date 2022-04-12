@@ -63,3 +63,6 @@ graph TD
 
 当配置完各种参数信息后，我们可以在src目录下用python Main.py命令开始模型的训练
 
+
+## 作者
+邮箱:luyuanhang137@qq.com
