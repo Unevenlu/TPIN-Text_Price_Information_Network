@@ -55,7 +55,7 @@ graph TD
     PriceEmbed -->|32,5,100|PriceMsg -->|32,5,100|rnn(Rnn) -->|32,100|msg_gru-->|32,100|concat
     
     otherPrice -->|32,87,5,3|PriceEmbed -->|32,87,5,100|lstm2(lstm) -->|32,87,5,100|att2(Self Attention) -->|32,87,100|prt(Price Attention)
-    att1 -->|32,100|prt -->|32,100|price_gru-->concat
+    att1 -->|32,100|prt -->|32,100|price_gru-->|32,100|concat
     att1 -->|32,100|price_gru
     concat -->|32,300|linear(linear) -->|32,2|softmax(softmax) -->|32,2|prediction
 ```
